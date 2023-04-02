@@ -27,14 +27,14 @@ class Board():
     def print_state(self):
         pprint.pprint(self.state)
         print(f"the agent is in row {self.agent.row} and col {self.agent.col}")
-
     def predict_colored(self, movement):
         counter = 0
         if movement == Movement.RIGHT:
             for col_no, elem in enumerate(self.state[self.agent.row][self.agent.col:], self.agent.col):
                 if elem == "X":
                     break
-                counter += 1
+                if elem == "0":
+                    counter += 1
             
         elif movement == Movement.LEFT:
 
@@ -44,7 +44,8 @@ class Board():
             for  col_no, elem in reversed(current_row):
                 if elem == "X":
                     break
-                counter += 1
+                if elem == "0":
+                    counter += 1
 
         elif movement == Movement.DOWN:
             self.transpose_state()
@@ -57,7 +58,6 @@ class Board():
             self.transpose_state()
         
         return counter
-
     def move(self, movement):
         if movement == Movement.RIGHT:
             for col_no, elem in enumerate(self.state[self.agent.row][self.agent.col:], self.agent.col):
@@ -104,15 +104,12 @@ class Board():
             self.transpose_state()
             self.move(Movement.LEFT)
             self.transpose_state()
-
     def transpose_state(self):
         self.state = np.array(self.state).transpose().tolist()
         temp = self.agent.col
         self.agent.col = self.agent.row
         self.agent.row = temp
-
-    def cost(self, action):
-        pass
-
+    def cost(self, movement):
+        return 
     def goal_test(self):
         pass
