@@ -8,7 +8,7 @@ def main():
     print(board.predict_colored(Movement.UP))
     for movement in Movement:
         print([movement])
-        print(board.predict_colored(movement))
+        print(board.cost(movement))
 
 
 

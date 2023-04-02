@@ -110,6 +110,11 @@ class Board():
         self.agent.col = self.agent.row
         self.agent.row = temp
     def cost(self, movement):
-        return 
+        
+        if movement == Movement.LEFT or movement == Movement.RIGHT:
+            return len(self.state[0]) - self.predict_colored(movement)
+        else:
+            return len(self.state) - self.predict_colored(movement)
+        
     def goal_test(self):
         pass
