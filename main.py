@@ -5,7 +5,7 @@ def main():
     
     board = Board("board.txt")
     board.print_state()
-    board.move(Movement.RIGHT)
+    board.move(Movement.LEFT)
     board.print_state()
 
 if __name__ == "__main__":

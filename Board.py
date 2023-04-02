@@ -41,6 +41,25 @@ class Board():
 
                 if col_no == len(self.state[self.agent.row]) - 1: #if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
+            
+        elif movement == Movement.LEFT:
+
+            current_row = list(enumerate(self.state[self.agent.row]))
+            current_row = current_row[:self.agent.col + 1]
+
+            
+            for  col_no, elem in reversed(current_row):
+                if elem == "X":
+                    self.state[self.agent.row][col_no + 1] = "S"
+                    break
+                
+                self.state[self.agent.row][col_no] = "1"
+
+                if col_no == 0: #if it is in the edge of the board
+                    self.state[self.agent.row][col_no] = "S"
+
+
+
 
 
             
