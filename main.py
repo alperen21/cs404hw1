@@ -5,28 +5,13 @@ def main():
     
     board = Board("board.txt")
 
-    board.print_state()
-    print("*************")
+    print(board.predict_colored(Movement.UP))
+    for movement in Movement:
+        print([movement])
+        print(board.predict_colored(movement))
 
-    board.move(Movement.LEFT)
-    board.print_state()
-    print("*************")
 
-    board.move(Movement.RIGHT)
-    board.print_state()
-    print("*************")
-
-    board.move(Movement.UP)
-    board.print_state()
-    print("*************")
-
-    board.move(Movement.LEFT)
-    board.print_state()
-    print("*************")
-
-    board.move(Movement.DOWN)
-    board.print_state()
-    print("*************")
 
 if __name__ == "__main__":
     main()
+
