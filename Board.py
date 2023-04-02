@@ -1,19 +1,13 @@
 import pprint
 import numpy as np
 from movement import Movement
-
-class Action():
-    def __init__(self, movement : Movement, cost : int) -> None:
-        self.movement = movement
-        self.cost = cost
-    
-    def __repr__(self) -> str:
-        return f"movement {self.movement} cost {self.cost}"
+import copy
 
 class Agent():
     def __init__(self, row, col) -> None:
         self.row = row
         self.col = col
+
 
 class Board():
     def __init__(self, filename):
@@ -23,13 +17,7 @@ class Board():
                 self.state.append(line.strip().split(", "))
         agent_coordiantes = self.find_agent()
         self.agent = Agent(agent_coordiantes[0], agent_coordiantes[1])
-    
-    def get_actions(self):
-        actions = list()
-        for movement in Movement:
-            cost = self.cost(movement)
-            actions.append(Action(movement, cost))
-        return actions
+
 
     def find_agent(self):
         for row_num, row in enumerate(self.state):
@@ -135,3 +123,13 @@ class Board():
                 if elem == 0:
                     return False
         return True
+
+def successor(board : Board):
+    successors = list()
+    for movement in Movement:
+        new_board = copy.deepcopy(board)
+        new_board.move(movement)
+        cost = board.cost(movement)
+        successors.append((cost, new_board))
+    return successors
+        
