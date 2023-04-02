@@ -2,6 +2,13 @@ import pprint
 import numpy as np
 from movement import Movement
 
+class Action():
+    def __init__(self, movement : Movement, cost : int) -> None:
+        self.movement = movement
+        self.cost = cost
+    
+    def __repr__(self) -> str:
+        return f"movement {self.movement} cost {self.cost}"
 
 class Agent():
     def __init__(self, row, col) -> None:
@@ -10,13 +17,20 @@ class Agent():
 
 class Board():
     def __init__(self, filename):
-
         self.state = list()
         with open(filename, "r") as file:
             for line in file.readlines():
                 self.state.append(line.strip().split(", "))
         agent_coordiantes = self.find_agent()
-        self.agent = Agent(agent_coordiantes[0], agent_coordiantes[1])  
+        self.agent = Agent(agent_coordiantes[0], agent_coordiantes[1])
+    
+    def get_actions(self):
+        actions = list()
+        for movement in Movement:
+            cost = self.cost(movement)
+            actions.append(Action(movement, cost))
+        return actions
+
     def find_agent(self):
         for row_num, row in enumerate(self.state):
             for col_num, element in enumerate(row):
@@ -114,7 +128,10 @@ class Board():
         if movement == Movement.LEFT or movement == Movement.RIGHT:
             return len(self.state[0]) - self.predict_colored(movement)
         else:
-            return len(self.state) - self.predict_colored(movement)
-        
+            return len(self.state) - self.predict_colored(movement) 
     def goal_test(self):
-        pass
+        for row in self.state:
+            for elem in row:
+                if elem == 0:
+                    return False
+        return True

@@ -1,14 +1,12 @@
 from Board import Board 
+from pprint import pprint
 from movement import Movement
 
 def main():
     
     board = Board("board.txt")
 
-    print(board.predict_colored(Movement.UP))
-    for movement in Movement:
-        print([movement])
-        print(board.cost(movement))
+    pprint(board.get_actions())
 
 
 
