@@ -7,6 +7,7 @@ def main():
     board = Board("board.txt")
     print(board.goal_test())
 
+
     
 
     

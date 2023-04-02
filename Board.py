@@ -124,6 +124,10 @@ class Board():
                     return False
         return True
 
+    def __eq__(self, __value: object) -> bool:
+        return self.state == __value.state
+        
+
 def successor(board : Board):
     successors = list()
     for movement in Movement:
