@@ -134,6 +134,6 @@ def successor(board : Board):
         new_board = copy.deepcopy(board)
         new_board.move(movement)
         cost = board.cost(movement)
-        successors.append((cost, new_board))
+        successors.append([cost, new_board])
     return successors
         

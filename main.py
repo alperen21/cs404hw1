@@ -1,11 +1,11 @@
 from Board import Board, successor
 from pprint import pprint
 from movement import Movement
+from ucs import ucs
 
 def main():
     
-    board = Board("board.txt")
-    print(board.goal_test())
+    ucs()
 
 
     
