@@ -1,4 +1,5 @@
 import pprint
+import numpy as np
 from movement import Movement
 
 
@@ -35,12 +36,16 @@ class Board():
                 
                 if elem == "X":
                     self.state[self.agent.row][col_no - 1] = "S"
+                    self.agent.row = self.agent.row
+                    self.agent.col = col_no - 1
                     break
 
                 self.state[self.agent.row][col_no] = "1"
 
                 if col_no == len(self.state[self.agent.row]) - 1: #if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
+                    self.agent.row = self.agent.row
+                    self.agent.col = col_no
             
         elif movement == Movement.LEFT:
 
@@ -51,12 +56,40 @@ class Board():
             for  col_no, elem in reversed(current_row):
                 if elem == "X":
                     self.state[self.agent.row][col_no + 1] = "S"
+                    self.agent.row = self.agent.row
+                    self.agent.col = col_no + 1
                     break
                 
                 self.state[self.agent.row][col_no] = "1"
 
                 if col_no == 0: #if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
+                    self.agent.row = self.agent.row
+                    self.agent.col = col_no
+
+        elif movement == Movement.DOWN:
+            self.transpose_state()
+            self.move(Movement.RIGHT)
+            self.transpose_state()
+        
+        elif movement == Movement.UP:
+            self.transpose_state()
+            self.move(Movement.LEFT)
+            self.transpose_state()
+
+    
+
+    def transpose_state(self):
+        self.state = np.array(self.state).transpose().tolist()
+        temp = self.agent.col
+        self.agent.col = self.agent.row
+        self.agent.row = temp
+
+
+
+
+
+            
 
 
 
