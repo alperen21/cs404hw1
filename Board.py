@@ -120,7 +120,7 @@ class Board():
     def goal_test(self):
         for row in self.state:
             for elem in row:
-                if elem == 0:
+                if elem == "0":
                     return False
         return True
 

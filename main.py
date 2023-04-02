@@ -5,13 +5,11 @@ from movement import Movement
 def main():
     
     board = Board("board.txt")
-    successors = successor(board)
+    print(board.goal_test())
 
-    for succ in successors:
-        print("cost of successor:", succ[0])
-        succ[1].print_state()
+    
 
-
+    
 
 if __name__ == "__main__":
     main()
