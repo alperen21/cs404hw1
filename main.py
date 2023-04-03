@@ -8,13 +8,7 @@ import copy
 from pprint import pprint
 
 
-def print_solution(node : Node):
-    if node == None:
-        return
-    
-    print_solution(node.parent)
-    pprint(node.state.state)
-    print("--------------------")
+
 
 def main():
     ucs()

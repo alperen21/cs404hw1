@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from queue import PriorityQueue
 import copy
+from pprint import pprint
 
 class Node:
     def __init__(self, state, cost : int, parent, direction) -> None:
@@ -52,5 +53,14 @@ class UCS_Frontier(Frontier):
     def isEmpty(self) -> bool:
         return self.data_structure.empty()
 
-    
-        
+def solution(initial_node : Node, goal_node : Node) -> None:
+    pprint(initial_node.state.state)
+    print("---------------------")
+    solution_helper(goal_node)
+
+def solution_helper(goal_node : Node) -> None:
+    if goal_node.parent == None:
+        return
+    solution_helper(goal_node.parent)
+    pprint(goal_node.state.state)
+    print("---------------------")

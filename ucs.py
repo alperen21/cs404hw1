@@ -1,4 +1,4 @@
-from Algorithms import UCS_Frontier, Node
+from Algorithms import UCS_Frontier, Node, solution
 from Board import Board, SUCC
 
 def ucs():
@@ -7,19 +7,19 @@ def ucs():
     
     start = Board()
     start.read_file("board.txt")
-    n = Node(
+    initial_node = Node(
         start,
         0,
         None,
         None
     )
-    frontier.put(n)
+    frontier.put(initial_node)
 
     while not frontier.isEmpty():
         n = frontier.pop()
         
         if n.state.goal_test():
-            print(n.state)
+            solution(initial_node, n)
             return
         
         for s in SUCC(n):
