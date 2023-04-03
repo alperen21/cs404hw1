@@ -1,6 +1,6 @@
 from Algorithms import UCS_Frontier, Node, solution
 from Board import Board, SUCC
-
+from NoSolution import NoSolutionError
 def ucs():
     closed = list()
     frontier = UCS_Frontier()
@@ -40,6 +40,8 @@ def ucs():
                 frontier.put(elem)
         
         closed.append(n)
+    
+    raise NoSolutionError
             
 
             
