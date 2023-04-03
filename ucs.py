@@ -1,32 +1,47 @@
-from Board import Board, successor
+from Algorithms import UCS_Frontier, Node
+from Board import Board, SUCC
 
 def ucs():
     closed = list()
-    start_node = Board("board.txt")
+    frontier = UCS_Frontier()
+    
+    start = Board()
+    start.read_file("board.txt")
+    n = Node(
+        start,
+        0,
+        None,
+        None
+    )
+    frontier.put(n)
 
-    frontier = list()
-    frontier.append([0, start_node])
-
-    while len(frontier) > 0:
-        frontier = sorted(frontier, key=lambda x: x[0], reverse=True)
-        node = frontier.pop()
-
-        if node[1].goal_test():
-            node[1].print_state()
+    while not frontier.isEmpty():
+        n = frontier.pop()
+        
+        if n.state.goal_test():
+            print(n.state)
             return
         
-        successors = successor(node[1])
+        for s in SUCC(n):
+            s.cost += n.cost
+        
+            if s.state not in [elem.state for elem in frontier.data_structure.queue] and s.state not in [elem.state for elem in closed]:
+                frontier.put(s)
 
-        for s in successors:
-            s[0] += node[0]
+            temp = list()  
+            while(not frontier.isEmpty()):
+                popped = frontier.pop()
+                if (s.state == popped.state and s.cost < popped.cost):
+                    popped.cost = s.cost
+                    popped.parent = n
+                temp.append(popped)
+            
+            for elem in temp:
+                frontier.put(elem)
+        
+        closed.append(n)
+            
 
-            if s[1] not in [elem[1] for elem in closed] and s[1] not in [elem[1] for elem in frontier]:
-                frontier.append(s)
-
-            for elem in frontier:
-                if (s[1] == elem[1]):
-                    if s[0] > elem[0]:
-                        elem[0] = s[0]
-
-        closed.append(node)
-                
+            
+            
+        

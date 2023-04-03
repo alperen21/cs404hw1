@@ -2,6 +2,7 @@ import pprint
 import numpy as np
 from movement import Movement
 import copy
+from Algorithms import Node
 
 class Agent():
     def __init__(self, row, col) -> None:
@@ -10,14 +11,19 @@ class Agent():
 
 
 class Board():
-    def __init__(self, filename):
+    def __init__ (self):
         self.state = list()
+        
+
+    def read_file(self, filename : str): 
         with open(filename, "r") as file:
             for line in file.readlines():
                 self.state.append(line.strip().split(", "))
         agent_coordiantes = self.find_agent()
         self.agent = Agent(agent_coordiantes[0], agent_coordiantes[1])
 
+    def __str__(self) -> str:
+        return str(self.state).replace("], ", "], \n")
 
     def find_agent(self):
         for row_num, row in enumerate(self.state):
@@ -106,6 +112,13 @@ class Board():
             self.transpose_state()
             self.move(Movement.LEFT)
             self.transpose_state()
+
+    def get_board(self):
+        new_board =  self.__init__()
+        new_board.state = copy.deepcopy(self.state)
+        new_board.agent = copy.deepcopy(self.agent)
+        return new_board
+    
     def transpose_state(self):
         self.state = np.array(self.state).transpose().tolist()
         temp = self.agent.col
@@ -128,12 +141,24 @@ class Board():
         return self.state == __value.state
         
 
-def successor(board : Board):
-    successors = list()
+def SUCC(node : Node) -> list[Node]:
+    children = list()
+
     for movement in Movement:
-        new_board = copy.deepcopy(board)
-        new_board.move(movement)
-        cost = board.cost(movement)
-        successors.append([cost, new_board])
-    return successors
+        child = copy.deepcopy(node)
+
+        child.cost = child.state.cost(movement)
+
+        child.state.move(movement)
+
+        child.parent = node
+
+        child.direction = movement
+
+        children.append(child)
+    
+    return children
+
+
         
+
