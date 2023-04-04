@@ -1,6 +1,11 @@
 from algorithm.ucs import ucs
 
-def main():
+def main() -> None:
+    """
+    The main function
+
+    :returns: None
+    """   
     ucs()
     
 

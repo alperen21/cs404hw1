@@ -1,7 +1,14 @@
 from algorithm.Frontier import UCS_Frontier, Node, solution
 from board.Board import Board, SUCC
 from exceptions.NoSolution import NoSolutionError
-def a_star():
+
+def a_star() -> None:
+    """
+    A* Algorithm implementation.
+
+    :returns: None
+    :raises NoSolutionError: raises an exception if no solution is found
+    """
     closed = list()
     frontier = UCS_Frontier()
     

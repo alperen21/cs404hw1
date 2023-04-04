@@ -1,5 +1,6 @@
 class NoSolutionError(Exception):
-    """Exception raised when no exceptions.
+    """
+    Exception raised when no solutions can be found
     """
 
     def __init__(self,):

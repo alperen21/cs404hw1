@@ -5,7 +5,13 @@ from board.Board import Board
 from board.SUCC import SUCC
 from exceptions.NoSolution import NoSolutionError
 
-def ucs():
+def ucs() -> None:
+    """
+    Uniform cost search implementation
+    
+    :raises NoSolutionError: raises an exception if no solution is found
+    :returns: None
+    """
     closed = list()
     frontier = UCS_Frontier()
     
