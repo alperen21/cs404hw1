@@ -29,7 +29,7 @@ def main() -> None:
 
     :returns: None
     """
-    
+
     start = time.time()
 
     parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')

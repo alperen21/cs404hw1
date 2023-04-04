@@ -114,7 +114,7 @@ class Board():
 
                 if elem == "X":
                     self.state[self.agent.row][col_no - 1] = "S"
-                    self.agent.row = self.agent.row
+                    # self.agent.row = self.agent.row
                     self.agent.col = col_no - 1
                     break
 
@@ -123,7 +123,7 @@ class Board():
                 if col_no == len(
                         self.state[self.agent.row]) - 1:  # if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
-                    self.agent.row = self.agent.row
+                    # self.agent.row = self.agent.row
                     self.agent.col = col_no
 
         elif movement == Movement.LEFT:
@@ -134,7 +134,7 @@ class Board():
             for col_no, elem in reversed(current_row):
                 if elem == "X":
                     self.state[self.agent.row][col_no + 1] = "S"
-                    self.agent.row = self.agent.row
+                    # self.agent.row = self.agent.row
                     self.agent.col = col_no + 1
                     break
 
@@ -142,7 +142,7 @@ class Board():
 
                 if col_no == 0:  # if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
-                    self.agent.row = self.agent.row
+                    # self.agent.row = self.agent.row
                     self.agent.col = col_no
 
         elif movement == Movement.DOWN:

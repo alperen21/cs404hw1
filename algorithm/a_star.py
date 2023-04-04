@@ -3,14 +3,16 @@ from algorithm.Node import Node
 from algorithm.solution import solution
 from board.Board import Board
 from board.SUCC import SUCC
+from board.SUCC_H import SUCC_H
 from exceptions.NoSolution import NoSolutionError
 
 def a_star(filename) -> None:
     """
-    A* Algorithm implementation.
+    Uniform cost search implementation
 
-    :returns: None
+    :param filename: name of the file
     :raises NoSolutionError: raises an exception if no solution is found
+    :returns: None
     """
     closed = list()
     frontier = UCS_Frontier()
@@ -32,7 +34,7 @@ def a_star(filename) -> None:
             solution(initial_node, n)
             return
 
-        for s in SUCC(n):
+        for s in SUCC_H(n):
             s.cost += n.cost
 
             if s.state not in [
@@ -43,7 +45,7 @@ def a_star(filename) -> None:
             temp = list()
             while (not frontier.isEmpty()):
                 popped = frontier.pop()
-                if (s.state == popped.state and s.cost < popped.cost):
+                if (s.state.state == popped.state.state and s.cost < popped.cost):
                     popped.cost = s.cost
                     popped.parent = n
                 temp.append(popped)
