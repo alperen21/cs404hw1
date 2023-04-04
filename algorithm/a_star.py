@@ -1,12 +1,12 @@
-from Algorithms import UCS_Frontier, Node, solution
-from Board import Board, SUCC
-from NoSolution import NoSolutionError
-def ucs():
+from algorithm.Frontier import UCS_Frontier, Node, solution
+from board.Board import Board, SUCC
+from exceptions.NoSolution import NoSolutionError
+def a_star():
     closed = list()
     frontier = UCS_Frontier()
     
     start = Board()
-    start.read_file("board.txt")
+    start.read_file("inputs/board.txt")
     initial_node = Node(
         start,
         0,

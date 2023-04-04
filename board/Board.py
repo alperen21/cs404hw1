@@ -1,20 +1,14 @@
 import pprint
 import numpy as np
-from movement import Movement
+from algorithm.movement import Movement
 import copy
-from Algorithms import Node
-
-class Agent():
-    def __init__(self, row, col) -> None:
-        self.row = row
-        self.col = col
-
+from algorithm.Frontier import Node
+from board.agent import Agent
 
 class Board():
     def __init__ (self):
         self.state = list()
         
-
     def read_file(self, filename : str): 
         with open(filename, "r") as file:
             for line in file.readlines():
@@ -130,6 +124,10 @@ class Board():
             return len(self.state[0]) - self.predict_colored(movement)
         else:
             return len(self.state) - self.predict_colored(movement) 
+    
+    def heuristic(self, movement):
+        return 0
+    
     def goal_test(self):
         for row in self.state:
             for elem in row:
@@ -139,15 +137,14 @@ class Board():
 
     def __eq__(self, __value: object) -> bool:
         return self.state == __value.state
-        
 
-def SUCC(node : Node) -> list[Node]:
+def SUCC_H(node: Node) -> list[Node]:      
     children = list()
 
     for movement in Movement:
         child = copy.deepcopy(node)
 
-        child.cost = child.state.cost(movement)
+        child.cost = child.state.cost(movement) + child.state.heuristic(movement)
 
         child.state.move(movement)
 
@@ -158,6 +155,7 @@ def SUCC(node : Node) -> list[Node]:
         children.append(child)
     
     return children
+
 
 
         
