@@ -1,7 +1,9 @@
-from algorithm.Frontier import UCS_Frontier, Node, solution
-from board.Board import Board, SUCC
+from algorithm.Frontier import UCS_Frontier
+from algorithm.Node import Node
+from algorithm.solution import solution
+from board.Board import Board
+from board.SUCC import SUCC
 from exceptions.NoSolution import NoSolutionError
-
 
 def a_star(filename) -> None:
     """

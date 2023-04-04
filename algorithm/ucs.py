@@ -4,7 +4,7 @@ from algorithm.solution import solution
 from board.Board import Board
 from board.SUCC import SUCC
 from exceptions.NoSolution import NoSolutionError
-
+from pprint import pprint
 
 def ucs(filename) -> None:
     """
@@ -29,6 +29,8 @@ def ucs(filename) -> None:
 
     while not frontier.isEmpty():
         n = frontier.pop()
+        pprint(n.state.state)
+        print()
 
         if n.state.goal_test():
             solution(initial_node, n)
@@ -45,7 +47,7 @@ def ucs(filename) -> None:
             temp = list()
             while (not frontier.isEmpty()):
                 popped = frontier.pop()
-                if (s.state == popped.state and s.cost < popped.cost):
+                if (s.state.state == popped.state.state and s.cost < popped.cost):
                     popped.cost = s.cost
                     popped.parent = n
                 temp.append(popped)
