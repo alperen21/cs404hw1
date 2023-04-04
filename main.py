@@ -1,6 +1,7 @@
 from algorithm.ucs import ucs
 from algorithm.a_star import a_star
 import argparse
+import time
 
 def start_ucs(difficulty : str) -> None:
     """
@@ -28,6 +29,7 @@ def main() -> None:
 
     :returns: None
     """
+    start = time.time()
 
     parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
     parser.add_argument('--difficulty', type=str, required=True)
@@ -65,6 +67,9 @@ def main() -> None:
             parser.print_help()
     else:
         parser.print_help()
+    end = time.time()
+
+    print(f"execution took: {end - start} s")
 
 if __name__ == "__main__":
     main()
