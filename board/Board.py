@@ -184,10 +184,36 @@ class Board():
         :param movement: to which cardinal direction the agent is to move
         :returns: the cost of moving to that direction
         """
-        if movement == Movement.LEFT or movement == Movement.RIGHT:
-            return len(self.state[0]) - self.predict_colored(movement)
+        counter = 1
+        if movement == Movement.RIGHT:
+            for elem in self.state[self.agent.row][self.agent.col:]:
+                if elem == "X":
+                    break
+                elif elem == "0" or elem == "1":
+                    counter += 1
+        
+        elif movement == Movement.LEFT:
+            current_row =  reversed(self.state[self.agent.row][:self.agent.col + 1])
+            for elem in current_row:
+                if elem == "X":
+                    break
+                elif elem == "0" or elem == "1":
+                    counter += 1
+
+        elif movement == Movement.DOWN:
+            self.transpose_state()
+            counter = self.cost(Movement.RIGHT)
+            self.transpose_state()
+        
+        elif movement == Movement.UP:
+            self.transpose_state()
+            counter = self.cost(Movement.LEFT)
+            self.transpose_state()
+
+        if counter == 1:
+            return float('inf')
         else:
-            return len(self.state) - self.predict_colored(movement)
+            return counter
 
     def heuristic(self, movement) -> int:
         """
@@ -196,7 +222,11 @@ class Board():
         :param movement: to which cardinal direction the agent is to move
         :returns: Returns the heuristic value of moving to that direction
         """
-        return 0
+
+        if movement == Movement.DOWN or movement == Movement.UP:
+            return len(self.state) - self.predict_colored(movement)
+        elif movement == Movement.LEFT or movement == Movement.RIGHT:
+            return len(self.state[0]) - self.predict_colored(movement)
 
     def goal_test(self):
         """

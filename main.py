@@ -10,7 +10,7 @@ def start_ucs(difficulty : str) -> None:
     :param difficulty: difficulty level
     :returns: None
     """
-    for i in range(1,6):
+    for i in range(1,2):
         ucs(f"inputs/{difficulty}/{difficulty}{i}.txt")
 
 def start_a_star(difficulty : str) -> None:
@@ -29,6 +29,7 @@ def main() -> None:
 
     :returns: None
     """
+    
     start = time.time()
 
     parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
