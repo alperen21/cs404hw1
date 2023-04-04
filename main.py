@@ -7,7 +7,10 @@ def main() -> None:
 
     :returns: None
     """
-    ucs()
+    for i in range(1,6):
+        print(f"=====================hard : {i}=====================")
+        ucs(f"inputs/hard/hard{i}.txt")
+        print("\n")
 
 
 if __name__ == "__main__":

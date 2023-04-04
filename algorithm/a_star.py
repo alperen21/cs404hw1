@@ -3,7 +3,7 @@ from board.Board import Board, SUCC
 from exceptions.NoSolution import NoSolutionError
 
 
-def a_star() -> None:
+def a_star(filename) -> None:
     """
     A* Algorithm implementation.
 
@@ -14,7 +14,7 @@ def a_star() -> None:
     frontier = UCS_Frontier()
 
     start = Board()
-    start.read_file("inputs/board.txt")
+    start.read_file(filename)
     initial_node = Node(
         start,
         0,

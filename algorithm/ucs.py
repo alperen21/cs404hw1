@@ -6,10 +6,11 @@ from board.SUCC import SUCC
 from exceptions.NoSolution import NoSolutionError
 
 
-def ucs() -> None:
+def ucs(filename) -> None:
     """
     Uniform cost search implementation
 
+    :param filename: name of the file
     :raises NoSolutionError: raises an exception if no solution is found
     :returns: None
     """
@@ -17,7 +18,7 @@ def ucs() -> None:
     frontier = UCS_Frontier()
 
     start = Board()
-    start.read_file("inputs/board.txt")
+    start.read_file(filename)
     initial_node = Node(
         start,
         0,
