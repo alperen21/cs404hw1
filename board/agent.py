@@ -1,7 +1,8 @@
 class Agent():
     """
-    Class used to indicate the coordinates of the agent    
+    Class used to indicate the coordinates of the agent
     """
+
     def __init__(self, row, col) -> None:
         """
         Constructor for the agent class

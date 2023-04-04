@@ -2,13 +2,14 @@ from algorithm.Node import Node
 from algorithm.movement import Movement
 import copy
 
-def SUCC(node : Node) -> list[Node]:
+
+def SUCC(node: Node) -> list[Node]:
     """
     Successor function
 
     :param node: the parent node
     :returns: Successors of the parent node
-    """   
+    """
     children = list()
 
     for movement in Movement:
@@ -23,5 +24,5 @@ def SUCC(node : Node) -> list[Node]:
         child.direction = movement
 
         children.append(child)
-    
+
     return children

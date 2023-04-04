@@ -5,18 +5,20 @@ import copy
 from algorithm.Frontier import Node
 from board.agent import Agent
 
+
 class Board():
     """
     Board class to indicate the current state
     """
-    def __init__ (self) -> None:
+
+    def __init__(self) -> None:
         """
         Constructor for the board class
         :returns: None
         """
         self.state = list()
-        
-    def read_file(self, filename : str) -> None: 
+
+    def read_file(self, filename: str) -> None:
         """
         Reads file to construct a matrix representation of the file
 
@@ -40,8 +42,8 @@ class Board():
     def find_agent(self) -> None:
         """
         Finds the coordinates of the agent
-        
-        :raises Exception: raises an exception if there is no agent 
+
+        :raises Exception: raises an exception if there is no agent
         :returns: None
         """
         for row_num, row in enumerate(self.state):
@@ -50,6 +52,7 @@ class Board():
                     assert self.state[row_num][col_num] == "S"
                     return (row_num, col_num)
         raise Exception("S not found")
+
     def print_state(self) -> None:
         """
         Prints information about the state and the agent
@@ -58,7 +61,8 @@ class Board():
         """
         pprint.pprint(self.state)
         print(f"the agent is in row {self.agent.row} and col {self.agent.col}")
-    def predict_colored(self, movement : Movement) -> int:
+
+    def predict_colored(self, movement: Movement) -> int:
         """
         Predicts how many grids will be colored by the move
 
@@ -67,18 +71,19 @@ class Board():
         """
         counter = 0
         if movement == Movement.RIGHT:
-            for col_no, elem in enumerate(self.state[self.agent.row][self.agent.col:], self.agent.col):
+            for col_no, elem in enumerate(
+                    self.state[self.agent.row][self.agent.col:], self.agent.col):
                 if elem == "X":
                     break
                 if elem == "0":
                     counter += 1
-            
+
         elif movement == Movement.LEFT:
 
             current_row = list(enumerate(self.state[self.agent.row]))
             current_row = current_row[:self.agent.col + 1]
 
-            for  col_no, elem in reversed(current_row):
+            for col_no, elem in reversed(current_row):
                 if elem == "X":
                     break
                 if elem == "0":
@@ -88,13 +93,14 @@ class Board():
             self.transpose_state()
             counter = self.predict_colored(Movement.RIGHT)
             self.transpose_state()
-        
+
         elif movement == Movement.UP:
             self.transpose_state()
             counter = self.predict_colored(Movement.LEFT)
             self.transpose_state()
-        
+
         return counter
+
     def move(self, movement) -> None:
         """
         Moves the agent to the specified direction
@@ -103,8 +109,9 @@ class Board():
         :returns: None
         """
         if movement == Movement.RIGHT:
-            for col_no, elem in enumerate(self.state[self.agent.row][self.agent.col:], self.agent.col):
-                
+            for col_no, elem in enumerate(
+                    self.state[self.agent.row][self.agent.col:], self.agent.col):
+
                 if elem == "X":
                     self.state[self.agent.row][col_no - 1] = "S"
                     self.agent.row = self.agent.row
@@ -113,27 +120,27 @@ class Board():
 
                 self.state[self.agent.row][col_no] = "1"
 
-                if col_no == len(self.state[self.agent.row]) - 1: #if it is in the edge of the board
+                if col_no == len(
+                        self.state[self.agent.row]) - 1:  # if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
                     self.agent.row = self.agent.row
                     self.agent.col = col_no
-            
+
         elif movement == Movement.LEFT:
 
             current_row = list(enumerate(self.state[self.agent.row]))
             current_row = current_row[:self.agent.col + 1]
 
-            
-            for  col_no, elem in reversed(current_row):
+            for col_no, elem in reversed(current_row):
                 if elem == "X":
                     self.state[self.agent.row][col_no + 1] = "S"
                     self.agent.row = self.agent.row
                     self.agent.col = col_no + 1
                     break
-                
+
                 self.state[self.agent.row][col_no] = "1"
 
-                if col_no == 0: #if it is in the edge of the board
+                if col_no == 0:  # if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"
                     self.agent.row = self.agent.row
                     self.agent.col = col_no
@@ -142,21 +149,23 @@ class Board():
             self.transpose_state()
             self.move(Movement.RIGHT)
             self.transpose_state()
-        
+
         elif movement == Movement.UP:
             self.transpose_state()
             self.move(Movement.LEFT)
             self.transpose_state()
+
     def get_board(self) -> list[list[str]]:
         """
         Returns a deep copy of the matrix used to denote the maze
 
         :returns: deep copy of the matrix used to denote the maze
         """
-        new_board =  self.__init__()
+        new_board = self.__init__()
         new_board.state = copy.deepcopy(self.state)
         new_board.agent = copy.deepcopy(self.agent)
-        return new_board   
+        return new_board
+
     def transpose_state(self) -> None:
         """
         Transposes the matrix used to denote the board
@@ -167,6 +176,7 @@ class Board():
         temp = self.agent.col
         self.agent.col = self.agent.row
         self.agent.row = temp
+
     def cost(self, movement) -> int:
         """
         The cost function
@@ -177,7 +187,8 @@ class Board():
         if movement == Movement.LEFT or movement == Movement.RIGHT:
             return len(self.state[0]) - self.predict_colored(movement)
         else:
-            return len(self.state) - self.predict_colored(movement)   
+            return len(self.state) - self.predict_colored(movement)
+
     def heuristic(self, movement) -> int:
         """
         Heuristic function
@@ -185,7 +196,8 @@ class Board():
         :param movement: to which cardinal direction the agent is to move
         :returns: Returns the heuristic value of moving to that direction
         """
-        return 0 
+        return 0
+
     def goal_test(self):
         """
         Goal test, works by checking if there are no 0's in the matrix
@@ -197,6 +209,7 @@ class Board():
                 if elem == "0":
                     return False
         return True
+
     def __eq__(self, __value: object) -> bool:
         """
         == operator overloading
@@ -205,10 +218,3 @@ class Board():
         :returns: If two objects are equivalent
         """
         return self.state == __value.state
-
-
-
-
-
-        
-
