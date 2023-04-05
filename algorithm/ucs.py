@@ -32,6 +32,7 @@ def ucs(filename) -> None:
         if n.state.goal_test():
             solution(initial_node, n)
             print("distance traveled:", n.state.distance)
+            print("number of expanded nodes:", len(closed))
             return
 
         for s in SUCC(n):

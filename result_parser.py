@@ -20,6 +20,7 @@ def parse():
             
             memory_regex = "86 *(.*) MiB.*"
             execution_time_regex = "execution took: (.*) s"
+            expanded_regex = "number of expanded nodes:(.*)"
 
             splitted = file.replace(".log", "").split("_")
             label = "".join(splitted)
@@ -28,7 +29,8 @@ def parse():
 
             results[label] = {
                 "execution": re.search(execution_time_regex, contents).group(1),
-                "memory" : re.findall(memory_regex, contents)[-1]
+                "memory" : re.findall(memory_regex, contents)[-1],
+                "expanded nodes":re.search(expanded_regex, contents).group(1)
             }
 
     for label in labels:

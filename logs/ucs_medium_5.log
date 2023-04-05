@@ -9,6 +9,16 @@ using ucs with medium
  ['X', '0', '0', '0', 'X', 'X', 'X', 'X', 'X', 'X'],
  ['X', '0', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
  ['0', '0', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', '0', '0', '0', 'S']]
+[['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', '0', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', '0', '0', '0', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', '0', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['0', '0', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
  ['S', '1', '1', '1', '1', '1', '1', '1', '1', '1']]
 ---------------------
 [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
@@ -88,47 +98,38 @@ using ucs with medium
  ['1', '1', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
  ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1']]
 ---------------------
-[['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
- ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
- ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
- ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
- ['X', 'X', 'X', '0', '0', '0', 'X', 'X', 'X', 'X'],
- ['X', 'X', 'X', '0', 'X', 'X', 'X', 'X', 'X', 'X'],
- ['X', '0', '0', '0', 'X', 'X', 'X', 'X', 'X', 'X'],
- ['X', '0', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
- ['0', '0', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
- ['0', '0', '0', '0', '0', '0', '0', '0', '0', 'S']]
 distance traveled: 1565
-execution took: 1.7649447917938232 s
+number of expanded nodes: 34
+execution took: 1.7956929206848145 s
 Filename: main.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    36  32.5820 MiB  32.5820 MiB           1   @profile(precision=4)
+    36  32.8242 MiB  32.8242 MiB           1   @profile(precision=4)
     37                                         def main() -> None:    
     38                                             """
     39                                             The main function
     40                                         
     41                                             :returns: None
     42                                             """
-    43  32.5820 MiB   0.0000 MiB           1       start = time.time()
+    43  32.8242 MiB   0.0000 MiB           1       start = time.time()
     44                                         
-    45  32.5820 MiB   0.0000 MiB           1       parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
-    46  32.5820 MiB   0.0000 MiB           1       parser.add_argument('--difficulty', type=str, required=True)
-    47  32.5820 MiB   0.0000 MiB           1       parser.add_argument('--algorithm', type=str, required=True)
-    48  32.5820 MiB   0.0000 MiB           1       parser.add_argument('--start', type=int, required=True)
-    49  32.5820 MiB   0.0000 MiB           1       parser.add_argument('--end', type=int, required=True)
+    45  32.8242 MiB   0.0000 MiB           1       parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
+    46  32.8242 MiB   0.0000 MiB           1       parser.add_argument('--difficulty', type=str, required=True)
+    47  32.8242 MiB   0.0000 MiB           1       parser.add_argument('--algorithm', type=str, required=True)
+    48  32.8242 MiB   0.0000 MiB           1       parser.add_argument('--start', type=int, required=True)
+    49  32.8242 MiB   0.0000 MiB           1       parser.add_argument('--end', type=int, required=True)
     50                                         
-    51  32.5859 MiB   0.0039 MiB           1       args = parser.parse_args()
+    51  32.8281 MiB   0.0039 MiB           1       args = parser.parse_args()
     52                                             
-    53  32.5859 MiB   0.0000 MiB           1       if args.algorithm == "ucs":
-    54  32.5859 MiB   0.0000 MiB           1           if args.difficulty == "easy":
+    53  32.8281 MiB   0.0000 MiB           1       if args.algorithm == "ucs":
+    54  32.8281 MiB   0.0000 MiB           1           if args.difficulty == "easy":
     55                                                     print("using ucs with easy")
     56                                                     start_ucs("easy", args.start, args.end)
     57                                         
-    58  32.5859 MiB   0.0000 MiB           1           elif args.difficulty == "medium":
-    59  32.5898 MiB   0.0039 MiB           1               print("using ucs with medium")
-    60  32.8789 MiB   0.2891 MiB           1               start_ucs("medium", args.start, args.end)
+    58  32.8281 MiB   0.0000 MiB           1           elif args.difficulty == "medium":
+    59  32.8320 MiB   0.0039 MiB           1               print("using ucs with medium")
+    60  33.1484 MiB   0.3164 MiB           1               start_ucs("medium", args.start, args.end)
     61                                         
     62                                                 elif args.difficulty == "hard":
     63                                                     print("using ucs with hard")
@@ -152,8 +153,8 @@ Line #    Mem usage    Increment  Occurrences   Line Contents
     81                                                     parser.print_help()
     82                                             else:
     83                                                 parser.print_help()
-    84  32.8789 MiB   0.0000 MiB           1       end = time.time()
+    84  33.1484 MiB   0.0000 MiB           1       end = time.time()
     85                                         
-    86  32.8789 MiB   0.0000 MiB           1       print(f"execution took: {end - start} s")
+    86  33.1484 MiB   0.0000 MiB           1       print(f"execution took: {end - start} s")
 
 

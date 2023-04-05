@@ -11,8 +11,9 @@ def solution(initial_node: Node, goal_node: Node) -> None:
     :returns: None
     """
     print("---------------------")
-    solution_helper(goal_node)
     pprint(initial_node.state.state)
+    solution_helper(goal_node)
+    
 
 
 def solution_helper(goal_node: Node) -> None:

@@ -1,37 +1,128 @@
-usage: main.py [-h] --difficulty DIFFICULTY --algorithm ALGORITHM --start
-               START --end END
-
-Use a search function to solve maze coloring problem
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --difficulty DIFFICULTY
-  --algorithm ALGORITHM
-  --start START
-  --end END
-execution took: 0.01590728759765625 s
+using A* with hard
+---------------------
+[['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'S', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+[['0', 'S', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['0', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['S', '1', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['0', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['1', '1', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['S', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['S', '1', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['1', '1', '1', '1', '1', 'S', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '0', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', '0', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['1', '1', '1', '1', '1', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['0', '0', '0', '0', '0', 'S', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['1', '1', '1', '1', '1', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['0', 'X', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['S', '1', '1', '1', '1', '1', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+[['1', '1', '1', '1', '1', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['S', 'X', 'X', 'X', 'X', '1', 'X', 'X', 'X', 'X'],
+ ['1', '1', '1', '1', '1', '1', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']]
+---------------------
+distance traveled: 742
+number of expanded nodes: 124
+execution took: 6.938277721405029 s
 Filename: main.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    36  32.4883 MiB  32.4883 MiB           1   @profile(precision=4)
+    36  32.5547 MiB  32.5547 MiB           1   @profile(precision=4)
     37                                         def main() -> None:    
     38                                             """
     39                                             The main function
     40                                         
     41                                             :returns: None
     42                                             """
-    43  32.4883 MiB   0.0000 MiB           1       start = time.time()
+    43  32.5547 MiB   0.0000 MiB           1       start = time.time()
     44                                         
-    45  32.4883 MiB   0.0000 MiB           1       parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
-    46  32.4883 MiB   0.0000 MiB           1       parser.add_argument('--difficulty', type=str, required=True)
-    47  32.4883 MiB   0.0000 MiB           1       parser.add_argument('--algorithm', type=str, required=True)
-    48  32.4883 MiB   0.0000 MiB           1       parser.add_argument('--start', type=int, required=True)
-    49  32.4883 MiB   0.0000 MiB           1       parser.add_argument('--end', type=int, required=True)
+    45  32.5547 MiB   0.0000 MiB           1       parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
+    46  32.5547 MiB   0.0000 MiB           1       parser.add_argument('--difficulty', type=str, required=True)
+    47  32.5547 MiB   0.0000 MiB           1       parser.add_argument('--algorithm', type=str, required=True)
+    48  32.5547 MiB   0.0000 MiB           1       parser.add_argument('--start', type=int, required=True)
+    49  32.5547 MiB   0.0000 MiB           1       parser.add_argument('--end', type=int, required=True)
     50                                         
-    51  32.4922 MiB   0.0039 MiB           1       args = parser.parse_args()
+    51  32.5547 MiB   0.0000 MiB           1       args = parser.parse_args()
     52                                             
-    53  32.4922 MiB   0.0000 MiB           1       if args.algorithm == "ucs":
+    53  32.5547 MiB   0.0000 MiB           1       if args.algorithm == "ucs":
     54                                                 if args.difficulty == "easy":
     55                                                     print("using ucs with easy")
     56                                                     start_ucs("easy", args.start, args.end)
@@ -46,24 +137,24 @@ Line #    Mem usage    Increment  Occurrences   Line Contents
     65                                                 else:
     66                                                     parser.print_help()
     67                                                     
-    68  32.4922 MiB   0.0000 MiB           1       elif args.algorithm == "a_star":
-    69                                                 if args.difficulty == "easy":
+    68  32.5547 MiB   0.0000 MiB           1       elif args.algorithm == "a_star":
+    69  32.5547 MiB   0.0000 MiB           1           if args.difficulty == "easy":
     70                                                     print("using A* with easy")
     71                                                     start_a_star("easy", args.start, args.end)
     72                                         
-    73                                                 elif args.difficulty == "medium":
+    73  32.5547 MiB   0.0000 MiB           1           elif args.difficulty == "medium":
     74                                                     print("using A* with medium")
     75                                                     start_a_star("medium", args.start, args.end)
     76                                         
-    77                                                 elif args.difficulty == "hard":
-    78                                                     print("using A* with hard")
-    79                                                     start_a_star("hard", args.start, args.end)
+    77  32.5547 MiB   0.0000 MiB           1           elif args.difficulty == "hard":
+    78  32.5586 MiB   0.0039 MiB           1               print("using A* with hard")
+    79  33.1094 MiB   0.5508 MiB           1               start_a_star("hard", args.start, args.end)
     80                                                 else:
     81                                                     parser.print_help()
     82                                             else:
-    83  32.5117 MiB   0.0195 MiB           1           parser.print_help()
-    84  32.5117 MiB   0.0000 MiB           1       end = time.time()
+    83                                                 parser.print_help()
+    84  33.1094 MiB   0.0000 MiB           1       end = time.time()
     85                                         
-    86  32.5156 MiB   0.0039 MiB           1       print(f"execution took: {end - start} s")
+    86  33.1094 MiB   0.0000 MiB           1       print(f"execution took: {end - start} s")
 
 
