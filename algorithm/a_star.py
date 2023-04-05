@@ -2,14 +2,13 @@ from algorithm.Frontier import UCS_Frontier
 from algorithm.Node import Node
 from algorithm.solution import solution
 from board.Board import Board
-from board.SUCC import SUCC
 from board.SUCC_H import SUCC_H
 from exceptions.NoSolution import NoSolutionError
 
 
 def a_star(filename) -> None:
     """
-    Uniform cost search implementation
+    A* search implementation
 
     :param filename: name of the file
     :raises NoSolutionError: raises an exception if no solution is found

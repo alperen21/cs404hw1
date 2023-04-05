@@ -31,6 +31,7 @@ def ucs(filename) -> None:
 
         if n.state.goal_test():
             solution(initial_node, n)
+            print("distance traveled:", n.state.distance)
             return
 
         for s in SUCC(n):

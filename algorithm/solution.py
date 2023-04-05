@@ -10,9 +10,9 @@ def solution(initial_node: Node, goal_node: Node) -> None:
     :param goal_node: the node that passes the goal test
     :returns: None
     """
-    pprint(initial_node.state.state)
     print("---------------------")
     solution_helper(goal_node)
+    pprint(initial_node.state.state)
 
 
 def solution_helper(goal_node: Node) -> None:

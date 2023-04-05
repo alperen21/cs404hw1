@@ -17,6 +17,7 @@ class Board():
         :returns: None
         """
         self.state = list()
+        self.distance = 0
 
     def read_file(self, filename: str) -> None:
         """
@@ -119,6 +120,7 @@ class Board():
                     break
 
                 self.state[self.agent.row][col_no] = "1"
+                self.distance += 1
 
                 if col_no == len(
                         self.state[self.agent.row]) - 1:  # if it is in the edge of the board
@@ -139,6 +141,7 @@ class Board():
                     break
 
                 self.state[self.agent.row][col_no] = "1"
+                self.distance += 1
 
                 if col_no == 0:  # if it is in the edge of the board
                     self.state[self.agent.row][col_no] = "S"

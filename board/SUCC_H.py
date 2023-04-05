@@ -24,6 +24,8 @@ def SUCC_H(node: Node) -> list[Node]:
 
         child.direction = movement
 
+        child.state.distance += node.state.distance
+
         children.append(child)
 
     return children

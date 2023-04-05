@@ -2,6 +2,10 @@ from algorithm.ucs import ucs
 from algorithm.a_star import a_star
 import argparse
 import time
+from board.Board import Board
+from board.SUCC import SUCC
+from algorithm.movement import Movement
+from algorithm.Node import Node
 from memory_profiler import profile
 
 
@@ -26,7 +30,7 @@ def start_a_star(difficulty : str) -> None:
         a_star(f"inputs/{difficulty}/{difficulty}{i}.txt")
 
 @profile(precision=4)
-def main() -> None:
+def main() -> None:    
     """
     The main function
 
