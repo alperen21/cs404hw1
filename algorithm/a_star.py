@@ -6,6 +6,7 @@ from board.SUCC import SUCC
 from board.SUCC_H import SUCC_H
 from exceptions.NoSolution import NoSolutionError
 
+
 def a_star(filename) -> None:
     """
     Uniform cost search implementation

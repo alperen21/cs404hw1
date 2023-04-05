@@ -2,6 +2,8 @@ from algorithm.ucs import ucs
 from algorithm.a_star import a_star
 import argparse
 import time
+from memory_profiler import profile
+
 
 def start_ucs(difficulty : str) -> None:
     """
@@ -23,20 +25,20 @@ def start_a_star(difficulty : str) -> None:
     for i in range(1,6):
         a_star(f"inputs/{difficulty}/{difficulty}{i}.txt")
 
+@profile
 def main() -> None:
     """
     The main function
 
     :returns: None
     """
-
     start = time.time()
 
     parser = argparse.ArgumentParser(description='Use a search function to solve maze coloring problem')
     parser.add_argument('--difficulty', type=str, required=True)
     parser.add_argument('--algorithm', type=str, required=True)
     args = parser.parse_args()
-
+    
     if args.algorithm == "ucs":
         if args.difficulty == "easy":
             print("using ucs with easy")
