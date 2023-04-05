@@ -25,7 +25,7 @@ def start_a_star(difficulty : str) -> None:
     for i in range(1,6):
         a_star(f"inputs/{difficulty}/{difficulty}{i}.txt")
 
-@profile
+@profile(precision=4)
 def main() -> None:
     """
     The main function
