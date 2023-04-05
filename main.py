@@ -12,7 +12,7 @@ def start_ucs(difficulty : str) -> None:
     :param difficulty: difficulty level
     :returns: None
     """
-    for i in range(1,2):
+    for i in range(1,6):
         ucs(f"inputs/{difficulty}/{difficulty}{i}.txt")
 
 def start_a_star(difficulty : str) -> None:
